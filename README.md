@@ -113,12 +113,22 @@ This project, CareerHub, is a mini job portal built using MongoDB as the databas
     - 404 Not Found: If the specified job_title does not exist in the database.
     - 400 Bad Request: If the confirmation parameter is not provided or does not equal 'Yes'.
 
-| Endpoint                        | Method | Description                            | Parameters                                  | Potential Responses                                    | Possible Errors                                           |
-|----------------------------------|--------|----------------------------------------|---------------------------------------------|-------------------------------------------------------|-----------------------------------------------------------|
-| `/jobs_by_salary`                | GET    | Query Jobs by Salary Range             | `min_salary` (optional), `max_salary` (optional) | List of jobs within the specified salary range     | 400 Bad Request: If parameters are invalid or missing     |
-| `/jobs_by_experience_level`      | GET    | Query Jobs by Experience Level         | `experience_level` (required)                | List of jobs matching the given experience level    | 400 Bad Request: If `experience_level` is missing or invalid |
-| `/top_companies_by_industry`     | GET    | Top Companies in an Industry           | `industry` (required)                      | List of top companies in the specified industry     | 400 Bad Request: If `industry` parameter is missing or invalid |
+| Endpoint                               | Method | Description                                    | Parameters                                           | Potential Responses                                               | Possible Errors                                                               |
+|-----------------------------------------|--------|------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| `/`                                     | GET    | Homepage                                       | None                                                 | Welcome message as a JSON response                              | None                                                                          |
+| `/create/jobPost`                       | POST   | Create a Job Post                              | `title` (required), `description` (required), `industry` (required), `average_salary` (required), `location` (required) | Success message with job post ID                                | 400 Bad Request: If required parameters are missing or empty                  |
+| `/search_by_job_id/<job_id>`            | GET    | View Job Details by Job ID                    | `job_id` (required)                                 | Job details as a JSON response                                  | 404 Not Found: If job with specified ID is not found                           |
+| `/update_by_job_title`                  | POST   | Update Job Details by Job Title               | `job_title` (required), `description` (optional), `average_salary` (optional), `location` (optional) | Success message after updating job details                        | 404 Not Found: If job with specified title is not found or invalid parameters |
+| `/delete_by_job_title`                  | DELETE | Delete Job Listing by Job Title               | `job_title` (required), `confirmation` (required)    | Confirmation message with job details before deletion             | 404 Not Found: If job with specified title is not found                      |
+| `/jobs_by_salary`                       | GET    | Query Jobs by Salary Range                    | `min_salary` (optional), `max_salary` (optional)      | List of jobs within the specified salary range as a JSON response | 400 Bad Request: If salary parameters are invalid or negative                  |
+| `/jobs_by_experience_level`              | GET    | Query Jobs by Experience Level                | `experience_level` (required)                        | List of jobs matching the given experience level as a JSON response | 400 Bad Request: If experience level parameter is missing or invalid            |
+| `/top_companies_by_industry`            | GET    | Top Companies in an Industry                  | `industry` (required)                                | List of top companies in the specified industry as a JSON response  | 400 Bad Request: If industry parameter is missing or empty                      |
 
+In this table:
+
+- Each endpoint is described, including its purpose, accepted parameters, potential responses, and possible errors.
+- The parameters are specified along with their requirements (required or optional).
+- Potential error responses are included for better understanding.
 
 
 ## Development Process
