@@ -1,0 +1,28 @@
+version: '1.0'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/Users/qlin/Desktop/Fall2023/NoSQL/Project/MP2:/ds5760/mongo"
+
+
+  # python-app:
+  #     image: python:3.9-slim
+  #     container_name: slim-python
+  #     depends_on:
+  #       - redis
+  #     volumes:
+  #       - "/Users/qlin/Desktop/Fall2023/NoSQL/Mini Project/MP2:/usr/ds5760"
+  #     working_dir: /usr/ds5760/
+  #     networks:
+  #       - app-network
+  #     command: tail -f /dev/null
+
+
+# networks:
+#   app-network:
+#     driver: bridge
+
