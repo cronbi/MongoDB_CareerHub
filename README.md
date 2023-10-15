@@ -72,27 +72,52 @@ This project, CareerHub, is a mini job portal built using MongoDB as the databas
     - 400 Bad Request: If any of the required parameters are missing or empty.
 
 3. View Job Details by ID
-Endpoint: /search_by_job_id/<job_id>
-Method: GET
-Purpose: Allows users to search for a job by its unique ID.
-Parameters:
-job_id (integer, required): Unique identifier for the job.
-Response:
-Success (200 OK):Not Found (404 Not Found):
-Possible Errors:
-404 Not Found: If the specified job_id does not exist in the database.
+- Endpoint: /search_by_job_id/<job_id>
+- Method: GET
+- Purpose: Allows users to search for a job by its unique ID.
+- Parameters:
+    - job_id (integer, required): Unique identifier for the job.
+- Response:
+    - Success (200 OK)
+    - Not Found (404 Not Found):
+- Possible Errors:
+    - 404 Not Found: If the specified job_id does not exist in the database.
 
 4. Update Job Details by Title
-Endpoint: /update_by_job_title
-Method: POST
-Purpose: Allows users to update job details by providing the job title.
-Parameters:
-job_title (string, required): Job title to be updated.
-description (string, optional): Updated job description.
-average_salary (integer, optional): Updated average salary.
-location (string, optional): Updated job location.
-Response:
-Success (200 OK):Not Found (404 Not Found):
+- Endpoint: /update_by_job_title
+- Method: POST
+- Purpose: Allows users to update job details by providing the job title.
+- Parameters:
+    - job_title (string, required): Job title to be updated.
+    - description (string, optional): Updated job description.
+    - average_salary (integer, optional): Updated average salary.
+    - location (string, optional): Updated job location.
+- Response:
+    - Success (200 OK)
+    - Not Found (404 Not Found)
+- Possible Errors:
+    - 400 Bad Request: If any of the required parameters are missing or empty.
+
+5. **Delete Job Listing by Title**
+- Endpoint: /delete_by_job_title
+- Method: DELETE
+- Purpose: Allows users to delete a job listing by providing the job title.
+- Parameters:
+    - job_title (string, required): Job title to be deleted.
+    - confirmation (string, required): User confirmation ('Yes' or 'No') to delete the job.
+- Response:
+    - Success (200 OK)
+    - Cancellation (200 OK)
+    - Not Found (404 Not Found)
+- Possible Errors:
+    - 404 Not Found: If the specified job_title does not exist in the database.
+    - 400 Bad Request: If the confirmation parameter is not provided or does not equal 'Yes'.
+
+| Endpoint                        | Method | Description                            | Parameters                                  | Potential Responses                                    | Possible Errors                                           |
+|----------------------------------|--------|----------------------------------------|---------------------------------------------|-------------------------------------------------------|-----------------------------------------------------------|
+| `/jobs_by_salary`                | GET    | Query Jobs by Salary Range             | `min_salary` (optional), `max_salary` (optional) | List of jobs within the specified salary range     | 400 Bad Request: If parameters are invalid or missing     |
+| `/jobs_by_experience_level`      | GET    | Query Jobs by Experience Level         | `experience_level` (required)                | List of jobs matching the given experience level    | 400 Bad Request: If `experience_level` is missing or invalid |
+| `/top_companies_by_industry`     | GET    | Top Companies in an Industry           | `industry` (required)                      | List of top companies in the specified industry     | 400 Bad Request: If `industry` parameter is missing or invalid |
 
 
 
