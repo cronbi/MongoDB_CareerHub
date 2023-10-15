@@ -46,6 +46,55 @@ This project, CareerHub, is a mini job portal built using MongoDB as the databas
 - Query Jobs by Experience Level: `GET /jobs_by_experience_level`
 - Top Companies in an Industry: `GET /top_companies_by_industry`
 
+### API Endpoints In-Depth
+1. Welcome Message
+- Endpoint: /
+- Method: GET
+- Purpose: Displays a welcome message to the user.
+- Parameters: None
+- Response: 
+    - Success (200 OK)
+- Possible Errors: None
+
+2. Create a Job Post
+- Endpoint: /create/jobPost
+- Method: POST
+- Purpose: Allows users to create a new job posting.
+- Parameters:
+    - title (string, required): Job title.
+    - description (string, required): Job description.
+    - industry (string, required): Industry of the job.
+    - average_salary (integer, required): Average salary for the job.
+    - location (string, required): Job location.
+- Response:
+    - Success (201 Created)
+- Possible Errors:
+    - 400 Bad Request: If any of the required parameters are missing or empty.
+
+3. View Job Details by ID
+Endpoint: /search_by_job_id/<job_id>
+Method: GET
+Purpose: Allows users to search for a job by its unique ID.
+Parameters:
+job_id (integer, required): Unique identifier for the job.
+Response:
+Success (200 OK):Not Found (404 Not Found):
+Possible Errors:
+404 Not Found: If the specified job_id does not exist in the database.
+
+4. Update Job Details by Title
+Endpoint: /update_by_job_title
+Method: POST
+Purpose: Allows users to update job details by providing the job title.
+Parameters:
+job_title (string, required): Job title to be updated.
+description (string, optional): Updated job description.
+average_salary (integer, optional): Updated average salary.
+location (string, optional): Updated job location.
+Response:
+Success (200 OK):Not Found (404 Not Found):
+
+
 
 ## Development Process
 
