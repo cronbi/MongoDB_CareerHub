@@ -52,6 +52,18 @@ This project, CareerHub, is a mini job portal built using MongoDB as the databas
 
 ### Schema Design
 - The schema design was crafted to represent companies and job postings in a way that allows for efficient querying and retrieval of data. A normalized schema approach was used, separating companies and job posts, and others into distinct collections.
+- An example schema of the final job collection would look like this:
+{
+  "_id": "<ObjectId>",
+  "id": 1,
+  "company_name": "Vanderbilt",
+  "title": "IT Consultant",
+  "description": "This role is at the forefront of the company's...",
+  "industry": "Higher Ed",
+  "average_salary": 44003,
+  "location": "Nashville, TN",
+  "level": "Entry Level"
+}
 
 ### Data Transformation and Import
 - Data from provided CSV files was transformed into JSON format and imported into the MongoDB careerhub database using a `csv_json.py` Python script. Pandas was utilized for data manipulation, and PyMongo was used for MongoDB integration.
