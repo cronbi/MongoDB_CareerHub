@@ -7,7 +7,6 @@ This project, CareerHub, is a mini job portal built using MongoDB as the databas
 - [Setup](#setup)
 - [Usage](#usage)
 - [Development Process](#DevelopmentProcess)
-- [Postman Integration](#Postman)
 
 
 ## Setup
