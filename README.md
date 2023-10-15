@@ -1,76 +1,60 @@
-# Chatbot Project README
+# CareerHub: Building a Mini Job Portal with MongoDB and Flask
 
 ## Overview
-This chatbot project utilizes Redis as a backend data store to enable real-time messaging and user interactions. The chatbot supports a variety of commands and features, including weather updates, fun facts, user identification, and messaging in different channels.
+This project, CareerHub, is a mini job portal built using MongoDB as the database and Flask as the web framework. It allows users to create, view, update, and delete job postings. This README provides detailed information on setting up the project, usage instructions, examples, and the development process.
 
 ## Table of Contents
 - [Setup](#setup)
 - [Usage](#usage)
-- [Monitoring](#monitoring)
-- [Example](#example)
+- [Development Process](#DevelopmentProcess)
+- [Postman Integration](#Postman)
+
 
 ## Setup
 
 ### Prerequisites
-- Docker: Ensure you have Docker installed and running on your machine.
-- Python: Make sure you have Python 3.x installed.
+- Python 3.x installed
+- MongoDB installed and running
+- Docker and Docker Compose
+- Postman
 
-### Running the Chatbot
-1. Clone this repository to your local machine: `git clone <repository_url>`
+### Installation
+1. Clone the repository: `git clone <repository-url>`
+2. Navigate to the project directory: `cd <CareerHub-project>`
+3. Install dependencies: `pip install -r requirements.txt`
+4. A `Dockerfile` and `docker-compose.yml` are provided for containerization.
+5. **Start the Flask App in your terminal** 
+   - python run-app.py Note: The Flask app will be running at http://127.0.0.1:5000/ (or your local host)
+6. **Access the API Endpoints**
+   - Use tools like Postman to interact with the API endpoints.
+   Refer to the Postman Integration section for detailed instructions on using Postman with CareerHub API.
 
-2. Navigate to the project directory: `cd <chatbot-project>`
-
-3. Build and start the Docker containers: `docker-compose up -d`
-
-4. Access the chatbot by running the following command in another terminal:
-`docker-compose exec <python-app> bash`
-`python <mp1.py>`
 
 ## Usage
 
-### Main Menu
-When you start the chatbot, you'll be presented with a main menu that offers several options. Here's how to use them:
+### Endpoints
+- Homepage: `GET /`
+- Create a Job Post: `POST /create/jobPost`
+- View Job Details by ID: `GET /search_by_job_id/<job_id>`
+- Update Job Details by Title: `POST /update_by_job_title`
+- Delete Job Listing by Title: `DELETE /delete_by_job_title`
+- Query Jobs by Salary Range: `GET /jobs_by_salary`
+- Query Jobs by Experience Level: `GET /jobs_by_experience_level`
+- Top Companies in an Industry: `GET /top_companies_by_industry`
 
-- `1: Identify yourself`: Initialize user details.
-- `2: Join a channel`: Join a channel and view previous messages.
-- `3: Leave a channel`: Leave a previously joined channel.
-- `4: Send a message to a channel`: Send a message to a channel.
-- `5: Get info about a user`: Retrieve user information.
-- `6: Exit`: Exit the chatbot.
 
-### Chat Channels
-- After joining a channel, you can send and receive messages within that channel.
-- If previous messages exist in the channel, they will be displayed when you join.
+## Development Process
 
-### Special Commands
-The chatbot supports special commands:
-- `!help`: List available commands.
-- `!weather`: Get a weather update for a city of choice.
-- `!fact`: Receive a random fun fact.
-- `!whoami`: Display user information.
+### Schema Design
+- The schema design was crafted to represent companies and job postings in a way that allows for efficient querying and retrieval of data. A normalized schema approach was used, separating companies and job posts, and others into distinct collections.
 
-## Monitoring
+### Data Transformation and Import
+- Data from provided CSV files was transformed into JSON format and imported into the MongoDB careerhub database using a `csv_json.py` Python script. Pandas was utilized for data manipulation, and PyMongo was used for MongoDB integration.
 
-You can monitor interactions in real-time. Here's how to do it:
+### Flask App
+- The Flask app was developed under `jobs.py`, incorporating various endpoints to handle job-related operations. Input validation, error handling, and MongoDB interactions were carefully implemented to ensure reliability and functionality.
 
-1. Open a new terminal.
-
-2. Run the following command to start monitoring Redis interactions: `redis-cli monitor`
-
-3. In your chatbot terminal, initiate interactions (e.g., join a channel, send messages).
-
-4. Observe the real-time output in the Redis monitor terminal. Screenshot the output for at least three different user inputs to your bot.
-
-## Example
-
-Below are a few of examples of how to run this chatbot:
-
-![Example 1](https://imgur.com/a/9m9revD)
-
-![Example 2](https://imgur.com/a/8YrbZeq)
-
-![Example 3](https://imgur.com/a/rMjialb)
-
+- Obstacles faced included validating user input, handling edge cases, and implementing proper error messages and responses. Detailed testing and debugging were performed to resolve issues.
 
 
 
