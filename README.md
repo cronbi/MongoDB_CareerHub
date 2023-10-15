@@ -19,15 +19,20 @@ This project, CareerHub, is a mini job portal built using MongoDB as the databas
 - Postman
 
 ### Installation
-1. Clone the repository: `git clone <repository-url>`
-2. Navigate to the project directory: `cd <CareerHub-project>`
-3. Install dependencies: `pip install -r requirements.txt`
+1. Clone the repository
+    - `git clone <repository-url>`
+2. Navigate to the project directory
+    - `cd <CareerHub-project>`
+3. Install dependencies 
+    - `pip install -r requirements.txt`
 4. A `Dockerfile` and `docker-compose.yml` are provided for containerization.
-5. **Start the Flask App in your terminal** 
-   - python run-app.py Note: The Flask app will be running at http://127.0.0.1:5000/ (or your local host)
-6. **Access the API Endpoints**
+    - `docker-compose up -d`
+5. Start the Flask App in your terminal
+   - `python run-app.py `
+   - Note: The Flask app will be running at http://127.0.0.1:5000/ (or your local host)
+6. Access the API Endpoints
    - Use tools like Postman to interact with the API endpoints.
-   Refer to the Postman Integration section for detailed instructions on using Postman with CareerHub API.
+   - Refer to the Postman Integration section for detailed instructions on using Postman with CareerHub API.
 
 
 ## Usage
